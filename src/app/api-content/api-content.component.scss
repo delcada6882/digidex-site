@@ -1,0 +1,231 @@
+@import '../../variables';
+
+@keyframes slideUp {
+    0% {
+        opacity: 50%;
+        transform: translateY(1vh);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 100%;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 50%;
+        transform: translateY(1vh);
+    }
+}
+
+@keyframes textShift {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.load {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    margin: 0 1vw;
+    justify-content: center;
+}
+.digimonSection {
+    display: flex;
+    // flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16vh;
+    margin-bottom: 15vh;
+    min-height: 69vh;
+}
+.test {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+}
+
+.digiCard {
+    animation: slideUp 0.2s;
+    border: 1px solid $blue-darkest;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    color: $gray-lightest;
+    background-color: $teal-darker;
+    // margin: 1vw;
+    .mat-mdc-card-header {
+        padding: 1vw 1vw !important;
+    }
+    .title {
+        font-size: 1.25vw;
+        white-space: nowrap;
+        width: 17vw;
+        text-align: center;
+        overflow: hidden;
+    }
+    .gradientOverflow {
+        transition: 0.2s;
+        opacity: 100%;
+        position: absolute;
+        top: 75%;
+        left: 5%;
+        width: 90%;
+        height: 10%;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 80%, $teal-darker 100%);
+    }
+    .gradientOverflowAfter {
+        transition: 0.2s;
+        opacity: 0;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 80%, $blue-darkest 100%);
+    }
+    .subtitle{
+        display: flex;
+        justify-content: center;
+        color: $gray-lighter;
+    }
+    .digiCardImageSection {
+        overflow: hidden;
+        height: 18vw;
+        // width: 18vw;
+        display: flex;
+        justify-content: center;
+        // align-items: flex-start;
+        .digiCardImage {
+            object-fit: cover;
+            width: 20vw;
+            border-top-right-radius: 3px;
+            border-top-left-radius: 3px;
+            // mix-blend-mode: multiply;
+        }
+    }
+    transition: 0.2s;
+
+    &.del {
+        animation: slideDown 0.2s;
+    }
+}
+.digiCard:hover {
+    cursor: pointer;
+    transform: translate(0, -8px);
+    transition: 0.2s;
+    background-color: $blue-darkest;
+    border-color: $teal-darker;
+    .gradientOverflow {
+        transition: 0.2s;
+        opacity: 0;
+    }
+    .gradientOverflowAfter {
+        transition: 0.2s;
+        opacity: 1;
+    }
+    .textOverflow p{
+        animation: textShift 10s linear;
+    }
+}
+// .paginator {
+//     background-color: $blue-darkest;
+//     color: $gray-lightest;
+//     border-radius: 20px;
+//     width: 60vw;
+//     margin: 0 auto;
+// }
+[role="group"] {
+    // background-color: $yellow-lighter;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    width: 35%;
+}
+
+.search-bar-full {
+    width: 50%;
+}
+
+
+.Boo {
+    background-color: red;
+}
+
+// .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading {
+//     border-color: red
+// }
+// ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+//     background-color: transparent;
+//   }
+  
+//   ::ng-deep .mat-select-value {
+//     color: #ff9100;
+//     font-weight: bold;
+//     font-size: 15px;
+//   }
+//   ::ng-deep .mat-select-arrow {
+//     color: #005999;
+//   }
+//   ::ng-deep .mat-option-text {
+//     text-align: center;
+//   }
+  .anchor {
+    text-decoration: none;
+    width: 20vw;
+    display: block;
+    margin: 1vw;
+  }
+.bottomSection {
+    box-shadow: 0 0 0.5vw #000;
+    justify-content: space-between;
+    position: fixed;
+    width: calc(100vw - 2vw);
+    bottom: 0;
+    display: flex;
+    background-color: $teal-darker;
+    border-top: 1px solid $blue-darkest;
+    align-items: center;
+    padding: 1vw;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+    height: 0;
+}
+
+.mat-mdc-form-field-bottom-align {
+    height: 0;
+}
+
+.search-input {
+    width: 70%;
+}
+.search-input::ng-deep {
+    .mat-mdc-text-field-wrapper {
+        background-color: white;
+        border-radius: 20px;
+        width: 90%;
+    }
+    .mat-mdc-form-field-subscript-wrapper {
+        height: 0;
+    }
+}
+
+.noDigimon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: $gray-lighter;
+    font-size: 8vw !important;
+}

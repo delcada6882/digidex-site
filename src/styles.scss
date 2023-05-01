@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "../src/variables";
+
+// html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: $teal-near-black;}
+
+.backgroundTest {
+    top: 0;
+    position: fixed;
+    background: radial-gradient(
+        rgba(255, 255 ,255, 0.2), 8%,
+        transparent 8%
+    );
+    background-position: 0% 0%;
+    background-size: 5vmin 5vmin;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+}
