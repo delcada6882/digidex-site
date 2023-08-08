@@ -12,14 +12,14 @@ const routes: Routes = [
   { path: 'digimon', component: DigiPageComponent },
   { path: 'about', component: AboutPageComponent },
   { path: 'digimon/:id', component: DigiDetailPageComponent, canActivate: [DigiDetailPageGuardGuard] },
-  { path: 'digiError', component: DigiErrorPageComponent}
+  { path: 'digiError', component: DigiErrorPageComponent }
 ];
 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
-  
+
 })
 
 export class AppRoutingModule { }

@@ -8,11 +8,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DigiDetailPageComponent {
 
-  constructor (
+  constructor(
     private route: ActivatedRoute,
     // private digi: HeroService,
     private location: Location
-  ) {}
+  ) { }
 
 
   // getHero(): void {
