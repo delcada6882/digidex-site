@@ -1,11 +1,13 @@
 @import "../../variables";
 
 .header {
+  font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 2vw;
-  height: 10vh;
+  height: 89px;
+
   background-color: $important-color;
   // border-bottom: 1px solid $blue-darkest;
   font-size: 1.5vw;
@@ -25,6 +27,7 @@
   justify-content: space-between;
   align-items: center;
   width: 20vw;
+  font-size: 24px;
   a {
     text-decoration: none;
     color: $important-text-color;

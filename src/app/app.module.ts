@@ -22,6 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DigiDetailPageComponent } from './digi-detail-page/digi-detail-page.component';
 import { DigiErrorPageComponent } from './digi-error-page/digi-error-page.component';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { DigiErrorPageComponent } from './digi-error-page/digi-error-page.compon
     HomePageComponent,
     DigiDetailPageComponent,
     DigiErrorPageComponent,
+    DialogBoxComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { DigiErrorPageComponent } from './digi-error-page/digi-error-page.compon
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

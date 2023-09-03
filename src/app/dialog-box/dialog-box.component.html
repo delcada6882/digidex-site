@@ -1,0 +1,20 @@
+<div class="dialogBox">
+  <h1 mat-dialog-title>
+    {{ data?.title }}
+  </h1>
+  <div mat-dialog-content class="content">
+    <p *ngIf="data?.content">{{ data?.content }}</p>
+    <p *ngIf="data?.content == ' '">-No description given-</p>
+    <p *ngIf="data?.condition">Condition: {{ data?.condition }}</p>
+  </div>
+  <div mat-dialog-actions class="buttons">
+    <button mat-button mat-dialog-close>Close</button>
+    <a
+      mat-button
+      *ngIf="data?.extra"
+      class="extra"
+      href="/digimon/{{ data?.extra }}"
+      >Go to Digimon</a
+    >
+  </div>
+</div>

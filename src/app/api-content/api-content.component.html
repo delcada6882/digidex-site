@@ -1,40 +1,72 @@
 <div *ngIf="showLoading" class="load">
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 </div>
 <div *ngIf="digimonArray" class="digimonSection">
-    <div *ngFor="let digimon of digimonArray;">
-        <a href="digimon/{{digimon.id}}" class="anchor digimonCards">
-            <mat-card class="digiCard">
-                <mat-card-header>
-                    <mat-card-title class="title" ngClass="{{digimon.name.length > 23 ? 'textOverflow' : ''}}" ><p>{{digimon.name}}</p></mat-card-title>
-                    <div *ngIf="digimon.name.length > 23" class="gradientOverflow"></div>
-                    <div *ngIf="digimon.name.length > 23" class="gradientOverflowAfter"></div>
-                    <mat-card-subtitle class="subtitle">#{{digimon.id}}</mat-card-subtitle>
-                </mat-card-header>
-                <div class="digiCardImageSection" *ngIf="digimon.image">
-                    <img src="{{(digimon.image).replace('+', '_')}}" alt="Digimon Image" class={{classTest}} />
-                </div>
-                <!-- <div class="digiCardImageSection" *ngIf="!digimon.image">
+  <div *ngFor="let digimon of digimonArray">
+    <a href="digimon/{{ digimon.id }}" class="anchor digimonCards">
+      <mat-card class="digiCard">
+        <mat-card-header>
+          <mat-card-title
+            class="title"
+            ngClass="{{ digimon.name.length > 20 ? 'textOverflow' : '' }}"
+            ><p>{{ digimon.name }}</p></mat-card-title
+          >
+          <div *ngIf="digimon.name.length > 23" class="gradientOverflow"></div>
+          <div
+            *ngIf="digimon.name.length > 23"
+            class="gradientOverflowAfter"
+          ></div>
+          <mat-card-subtitle class="subtitle"
+            >#{{ digimon.id }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <div class="digiCardImageSection" *ngIf="digimon.image">
+          <img
+            src="{{ digimon.image.replace('+', '_') }}"
+            alt="Digimon Image"
+            class="{{ classTest }}"
+          />
+        </div>
+        <!-- <div class="digiCardImageSection" *ngIf="!digimon.image">
                     <p>No LOAD</p>
                 </div> -->
-            </mat-card>
-        </a>
-    </div>
+      </mat-card>
+    </a>
+  </div>
 </div>
 <div *ngIf="noDigimon" class="noDigimon">
-    <h1>It appears your digi-search didn't result in any digimon</h1>
+  <h1>It appears your digi-search didn't result in any digimon</h1>
 </div>
 <div class="bottomSection">
-    <mat-form-field class="search-input">
-        <mat-label>Search</mat-label>
-        <input matInput type="text" aria-describedby="mat-hint=false" #searchInput (input)="keySearchFunc(searchInput.value);">
-        <button matSuffix mat-icon-button aria-label="Search" (click)="searchDigiArray(searchInput.value);">
-          <mat-icon>search</mat-icon>
-        </button>
-    </mat-form-field>
-    <!-- <mat-paginator #pagination [length]="1422" aria-label="Select page" role="group" class="paginator" (page)="pageEvent($event);">
+  <mat-form-field class="search-input">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      type="text"
+      aria-describedby="mat-hint=false"
+      #searchInput
+      (input)="keySearchFunc(searchInput.value)"
+    />
+    <button
+      matSuffix
+      mat-icon-button
+      aria-label="Search"
+      (click)="searchDigiArray(searchInput.value)"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+  <!-- <mat-paginator #pagination [length]="1422" aria-label="Select page" role="group" class="paginator" (page)="pageEvent($event);">
     </mat-paginator> -->
-    <mat-paginator #paginator class="demo-paginator" (page)="pageEvent($event)" [length]="digiLength" [pageSize]="pageSize"
-        [pageIndex]="0" aria-label="Select page" showFirstLastButtons="showFirstLastButtons">
-    </mat-paginator>
+  <mat-paginator
+    #paginator
+    class="demo-paginator paginator-box"
+    (page)="pageEvent($event)"
+    [length]="digiLength"
+    [pageSize]="pageSize"
+    [pageIndex]="0"
+    aria-label="Select page"
+    showFirstLastButtons="showFirstLastButtons"
+  >
+  </mat-paginator>
 </div>

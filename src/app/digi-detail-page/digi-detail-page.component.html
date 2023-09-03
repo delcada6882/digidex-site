@@ -1,2 +1,138 @@
 <app-header></app-header>
+<div id="content">
+  <div class="top">
+    <mat-card class="digiCard">
+      <div class="digiCardImageSection">
+        <img
+          src="{{ digi?.images?.[0]?.href}}"
+          alt="Digimon Image"
+          class="digiCardImage"
+        />
+      </div>
+      <div class="cardText">
+        <mat-card-title class="title"
+          ><p>{{ digi?.name }}</p></mat-card-title
+        >
+        <mat-card-subtitle class="subtitle">#{{ digi?.id }}</mat-card-subtitle>
+      </div>
+      <div class="fields">
+        <img *ngFor="let item of digi?.fields" src="{{ item?.image }}" alt="" />
+        <p *ngIf="!digi?.fields" class="noFields">-No Fields Given-</p>
+      </div>
+      <div class="specifiers">
+        <div class="left">
+          <p>Level:</p>
+          <p>Attribute:</p>
+          <p>Type:</p>
+        </div>
+        <div class="right">
+          <p>{{ digi?.levels?.[0]?.level }}</p>
+          <p *ngIf="!digi?.levels?.[0]?.level">N/A</p>
+          <p>{{ digi?.attributes?.[0]?.attribute }}</p>
+          <p *ngIf="!digi?.attributes?.[0]?.attribute">N/A</p>
+          <p>{{ digi?.types?.[0]?.type }}</p>
+          <p *ngIf="!digi?.types?.[0]?.type">N/A</p>
+        </div>
+      </div>
+    </mat-card>
+    <div class="right">
+      <div class="description">
+        <div class="title">
+          <h1>Description</h1>
+          <div class="flags">
+            <img
+              (click)="changeLanguage('en_us')"
+              *ngIf="language == 'jap'"
+              src="../../assets/images/UK Flag.png"
+              alt="Flag of UK"
+            />
+            <img
+              (click)="changeLanguage('jap')"
+              *ngIf="language == 'en_us'"
+              src="../../assets/images/JapanFlag.png"
+              alt="Flag of Japan"
+            />
+          </div>
+        </div>
+
+        <div class="content">
+          <p *ngIf="digi?.descriptions?.[0]?.language == 'en_us'">
+            {{ digiDescription }}
+          </p>
+          <p *ngIf="!digi?.descriptions?.[1]?.description">
+            -No description given-
+          </p>
+        </div>
+      </div>
+      <div class="skills">
+        <div class="title">
+          <h1>Skills</h1>
+          <svg
+            class="plusSVG"
+            xmlns="http://www.w3.org/2000/svg"
+            height="48"
+            viewBox="0 -960 960 960"
+            width="48"
+            fill="currentColor"
+          >
+            <path
+              d="M450-450H200v-60h250v-250h60v250h250v60H510v250h-60v-250Z"
+            />
+          </svg>
+        </div>
+        <div class="content">
+          <div
+            class="skill"
+            *ngFor="let skill of digi?.skills"
+            (click)="
+              openDialog({
+                data: { title: skill.skill, content: skill.description }
+              })
+            "
+          >
+            <h2>{{ skill.skill }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="left">
+      <h1>Prior Evolutions</h1>
+      <div class="priorDigi">
+        <a *ngFor="let prior of digi?.priorEvolutions">
+          <img
+            src="{{ prior?.image }}"
+            alt="{{ prior?.digimon }}"
+            class="prior evo"
+          />
+        </a>
+      </div>
+    </div>
+    <div class="middle"></div>
+    <div class="right">
+      <h1>Next Evolutions</h1>
+      <div class="nextDigi">
+        <a
+          *ngFor="let next of digi?.nextEvolutions"
+          (click)="
+            openDialog({
+              data: {
+                title: next.digimon,
+                condition: next.condition,
+                extra: next.id
+              }
+            })
+          "
+        >
+          <img
+            src="{{ next?.image }}"
+            alt="{{ next?.digimon }}"
+            class="next evo"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="backgroundTest"></div>

@@ -23,7 +23,7 @@ export class ApiContentComponent implements OnInit {
   pageSize: number | undefined;
 
   apiTest = new DigimonApiService(this.http);
-  timeoutId?: ReturnType<typeof setTimeout> ;
+  timeoutId?: ReturnType<typeof setTimeout>;
 
 
   // grabData(page: number, pageSize: number){
@@ -45,7 +45,7 @@ export class ApiContentComponent implements OnInit {
 
   pageEvent(event: PageEvent) {
     // this.digimonArray = this.apiTest?.grabData(event.pageIndex, event.pageSize);
-    this.apiTest?.getDigimonList(event.pageIndex, event.pageSize).subscribe(data => {this.digimonArray = data.content})
+    this.apiTest?.getDigimonList(event.pageIndex, event.pageSize).subscribe(data => { this.digimonArray = data.content })
     console.log(document.documentElement.scrollHeight)
     console.log(document.documentElement.scrollTop)
   }
@@ -54,10 +54,10 @@ export class ApiContentComponent implements OnInit {
     this.showLoading = true;
     this.digimonArray = [];
 
-    const test = () => {this.searchDigiArray(item)}
+    const test = () => { this.searchDigiArray(item) }
 
     clearTimeout(this.timeoutId);
-    
+
     this.timeoutId = setTimeout(test, 250);
 
   }
@@ -70,15 +70,15 @@ export class ApiContentComponent implements OnInit {
     this.digimonArray = [];
     console.log(item)
     // if(item )
-    if(item == "") {
+    if (item == "") {
       console.log('empty')
-      this.apiTest?.getDigimonList(0, 200).subscribe(data => {this.digimonArray = data.content; this.showLoading = false;})
+      this.apiTest?.getDigimonList(0, 200).subscribe(data => { this.digimonArray = data.content; this.showLoading = false; })
       this.digiLength = 1422;
       this.pageSize = 200;
       return;
     }
     else {
-      this.apiTest?.searchDigimonList(0, 200, item).subscribe(data => {this.digimonArray = data.content; this.digiLength = this.digimonArray?.length; this.showLoading = false; this.pageSize = this.digiLength; console.log(this.digiLength); if(this.digiLength == undefined) {this.noDigimon = true;}})
+      this.apiTest?.searchDigimonList(0, 200, item).subscribe(data => { this.digimonArray = data.content; this.digiLength = this.digimonArray?.length; this.showLoading = false; this.pageSize = this.digiLength; console.log(this.digiLength); if (this.digiLength == undefined) { this.noDigimon = true; } })
     }
 
 
@@ -92,7 +92,7 @@ export class ApiContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.apiTest?.getDigimonList(0, 200).subscribe(data => {this.digimonArray = data.content; this.showLoading = false;})
+    this.apiTest?.getDigimonList(0, 200).subscribe(data => { this.digimonArray = data.content; this.showLoading = false; console.log(this.digimonArray); })
     this.digiLength = 1422;
     this.pageSize = 200;
   }
